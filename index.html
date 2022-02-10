@@ -12,12 +12,19 @@
     <title>Bate Papo Uol</title>
 </head>
 <body>
+    <main class="initial-page">
+        <div class="content">
+            <img src="assets/logo.png" alt="Bate Papo Uol">
+            <input type="text" placeholder="Digite seu nome" class="user-name">
+            <input type="button" value="Entrar" class="get-in">
+        </div>
+    </main>
     <main class="chat-content">
         <header>
             <img src="assets/logo.png" alt="Bate Papo Uol">
             <ion-icon class="btn-menu" onclick="" name="people"></ion-icon>
         </header>
-        <section class="chat">
+        <section id="chat">
             <div class="chat-news user-action">
                 <p>
                     <span class="timestamp">(09:21:45)</span>
@@ -94,6 +101,7 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="script/script.js"></script>  
 </body>
 

@@ -3,6 +3,54 @@ body {
     background-color: #F3F3F3;
 }
 
+.initial-page{
+    height:100vh;
+    background-color: #FFFFFF;
+}
+.initial-page .content {
+    width: 200px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+}
+.initial-page img{
+    width: 130px;
+    height: 92px;
+
+    margin-top: 72px;
+}
+.initial-page input[type="text"] {
+    width: 261px;
+    height: 54px;
+
+    background: #FFFFFF;
+    border: 1px solid #D7D7D7;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    text-align: center;
+    margin-top: 100px;
+}
+.initial-page input[type="text"]::placeholder {
+    color: #AEAEAE;
+}
+.initial-page input[type="button"] {
+    width: 109px;
+    height: 45px;
+    
+    background: #E7E7E7;
+    border: none;
+    border-radius: 9px;
+    margin-top: 15px;
+
+    color: #696969;
+    cursor: pointer;
+}
+.chat-content {
+    display: none;
+}
 header, footer {
     width: calc(100vw - 44px);
     height: 80px;
@@ -44,7 +92,7 @@ header ion-icon {
 /*                    Chat                     */
 /* -------------------------------------------- */
 
-.chat {
+#chat {
     background-color: #F3F3F3;
 
     overflow: auto;
