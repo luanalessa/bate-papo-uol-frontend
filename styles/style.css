@@ -1,0 +1,172 @@
+body {
+    font-family: Roboto;
+    background-color: #F3F3F3;
+}
+
+header, footer {
+    width: calc(100vw - 44px);
+    height: 80px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 22px;
+
+    position: fixed;
+}
+
+header {
+    top: 0;
+}
+
+footer {
+    bottom: 0;
+}
+
+/* -------------------------------------------- */
+/*                 Header                     */
+/* -------------------------------------------- */
+
+header img {
+    height: 53px;
+    cursor: pointer;
+}
+
+header ion-icon {
+    font-size: 50px;
+    cursor: pointer;
+}
+
+
+/* -------------------------------------------- */
+/*                    Chat                     */
+/* -------------------------------------------- */
+
+.chat {
+    background-color: #F3F3F3;
+
+    overflow: auto;
+    margin-top: 106px;
+}
+.chat-news {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding:  10px 20px;
+    margin: 5px 0;
+    line-height:1.4;
+}
+.user-action {
+    min-height: 40px;
+    background: #DCDCDC;
+    border-radius: 2px;
+}
+.user-message {
+    min-height: 40px;
+    background: #FFFFFF;
+}
+.private {
+    background: #FFDEDE;
+}
+.timestamp {
+    color: #AAAAAA;
+    margin-right: 10px;
+}
+.name {
+    font-weight: 600;
+}
+.name:first-child {
+    margin-left: 5px;
+}
+
+
+/* -------------------------------------------- */
+/*                  Footer                     */
+/* -------------------------------------------- */
+
+footer input {
+    width: 100%;
+    height: 30px;
+
+    font-family: Roboto;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+    border: none;
+}
+
+footer ion-icon {
+    font-size: 30px;
+    
+}
+
+/* -------------------------------------------- */
+/*                  Modal                     */
+/* -------------------------------------------- */
+
+.modal {
+    position: fixed;
+    top: 0;
+    display: none;
+    justify-content: flex-end;
+}
+
+.modal-back {
+    width: calc(100vw - 259px);
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+}
+.menu {
+    width: 259px;
+    height: 100vh;
+    background: #FFFFFF;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+
+    pointer-events :none;
+}
+.menu p {
+    width: 170px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #000000;
+
+    margin: 20px 0;
+}
+.menu div {
+    width: 100%;
+    height: 25px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+
+    padding: 0 10px;
+    margin: 10px 0;
+}
+
+.menu div ion-icon:first-of-type {
+    font-size: 25px;
+}
+
+.menu div span {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    margin-top: 3px;
+}
+
+.check {
+    position: absolute;
+    right: 30px;
+
+    display: none;
+}
