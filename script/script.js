@@ -115,7 +115,7 @@ const getMessages = () => {
     })
 }
 
-const typeOfMessage = (action) => 
+const typeOfMessage = (action) => {
     const messages = {
     'status': `<div class="chat-news user-action">
                         <p>
