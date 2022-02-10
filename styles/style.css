@@ -93,10 +93,10 @@ header ion-icon {
 /* -------------------------------------------- */
 
 #chat {
-    background-color: #F3F3F3;
-
+    width: 100%;
     overflow: auto;
     margin-top: 106px;
+    margin-bottom: 106px;
 }
 .chat-news {
     display: flex;
