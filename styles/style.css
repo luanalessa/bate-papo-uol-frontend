@@ -192,8 +192,13 @@ footer ion-icon {
 
     margin: 20px 0;
 }
+
+.menu .online-users{
+    display: inline-block;
+    height:auto;
+}
 .menu div {
-    width: 100%;
+    width: 239px;
     height: 25px;
 
     display: flex;
