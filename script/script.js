@@ -111,9 +111,8 @@ const getMessages = () => {
 }
 
 const typeOfMessage = (action) => {
-    switch(action.type) {
-        case 'status':
-            return `<div class="chat-news user-action">
+    const messages = {
+    'status': `<div class="chat-news user-action">
                         <p>
                             <span class="timestamp">(${action.time})</span>
                             <span class="name">${action.from}</span>
@@ -121,9 +120,8 @@ const typeOfMessage = (action) => {
                                 ${action.text}
                             </span>
                         </p> 
-                    </div>`
-        case 'message':
-            return `<div class="chat-news user-message">
+                </div>`,
+    'message': `<div class="chat-news user-message">
                         <p>
                             <span class="timestamp">(${action.time})</span>
                             <span class="name">${action.from}</span>
@@ -133,9 +131,8 @@ const typeOfMessage = (action) => {
                                 ${action.text}
                             </span>
                         </p> 
-                    </div>`
-        case 'private-message':
-                return `<div class="chat-news user-message private">
+                </div>`,
+    'private-message': `<div class="chat-news user-message private">
                             <p>
                                 <span class="timestamp">(${action.time})</span>
                                 <span class="name">${action.from}</span>
@@ -145,7 +142,7 @@ const typeOfMessage = (action) => {
                                     ${action.text}
                                 </span>
                             </p> 
-                        </div>`
+                        </div>`,
     }
+    return messages[action.type]
 }
-
