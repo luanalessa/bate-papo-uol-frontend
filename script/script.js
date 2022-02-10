@@ -13,7 +13,8 @@ const btnChat = document.querySelector(".btn-chat");
 
 let users;
 let currentUser;
-let userStatus = false;
+let userStatus;
+let messageStatus;
 
 btnGetIn.addEventListener("click", async () => {
     currentUser = document.querySelector(".user-name").value;
@@ -40,30 +41,23 @@ const login = (user) => {
         url: urlParticipants,
         data:{ name: user }
     }).then((response) => {
+        console.log(response);
         initialPage.style.display = "none";
         chatContent.style.display = "flex";
-
         getParticipants();
-
-        const date = new Date();
-        document.querySelector("#chat").innerHTML += 
-        `<div class="chat-news user-action">
-            <p>
-                <span class="timestamp">(${date.getHours()}:${date.getMinutes()}:${date.getSeconds()})</span>
-                <span class="name">${currentUser}</span>
-                <span class="message">
-                    entra na sala...
-                </span>
-            </p> 
-        </div>`
-
         getMessages();
-        // setInterval(()=> checkUser(currentUser), 5000)
-        setInterval(()=> getMessages(), 3000)
-
+        userStatus = setInterval(()=> checkUser(currentUser), 5000)
     }).catch((error) => {
         console.log(error)
     })
+};
+
+const logout = (user) => {
+    currentUser = null;
+    clearInterval(userStatus);
+    clearInterval(messageStatus);
+    initialPage.style.display = "flex";
+    chatContent.style.display = "none";
 };
 
 const checkUser = (user) => {
@@ -74,9 +68,7 @@ const checkUser = (user) => {
     }).then((response) => {
         console.log(response)
     }).catch(error => {
-        currentUser = null;
-        initialPage.style.display = "none";
-        chatContent.style.display = "flex";
+        logout()
     })
 };
 
@@ -86,6 +78,7 @@ const getParticipants = () =>{
         url: urlParticipants
     }).then((response) => {
         users = response.data
+        messageStatus = setInterval(()=> getMessages(), 3000);
     })
 };
 
@@ -100,26 +93,23 @@ const sendMessage = () => {
             type: "message"
         }
     }).then(response => {
-        console.log(response);
+        inputChat.value = "";
         getMessages();
-
     }).catch(error => {
         console.log(error)
     })
 }
-
-
 
 const getMessages = () => {
     axios({
         method:'GET',
         url: urlMessages
     }).then((response) => {
-        (response.data).forEach((action, index) => {
-            document.querySelector("#chat").insertAdjacentHTML( 'afterbegin' , typeOfMessage(action))
-            // document.querySelector(".chat-news").scrollIntoView();
-
+        (response.data).forEach((action) => {
+            document.querySelector("#chat").insertAdjacentHTML( 'beforeend' , typeOfMessage(action))
         })
+        let data = document.querySelectorAll(".chat-news");
+        data[data.length - 1].scrollIntoView()
     }).catch(error => {
         console.log(error);
     })
@@ -145,10 +135,22 @@ const typeOfMessage = (action) => {
                             <span class="message">to</span>
                             <span class="name">${action.to}</span>:
                             <span class="message">
-                            ${action.text}
+                                ${action.text}
                             </span>
                         </p> 
                     </div>`
+        case 'private-message':
+                return `<div class="chat-news user-message private">
+                            <p>
+                                <span class="timestamp">(${action.time})</span>
+                                <span class="name">${action.from}</span>
+                                <span class="message">responde reservadamente para</span>
+                                <span class="name">${action.to}</span>:
+                                <span class="message">
+                                    ${action.text}
+                                </span>
+                            </p> 
+                        </div>`
     }
 }
 

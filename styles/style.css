@@ -106,6 +106,10 @@ header ion-icon {
     margin: 5px 0;
     line-height:1.4;
 }
+
+.chat-news:last-of-type{
+    margin-bottom: 100px;
+}
 .user-action {
     min-height: 40px;
     background: #DCDCDC;
@@ -135,7 +139,7 @@ header ion-icon {
 /* -------------------------------------------- */
 
 footer input {
-    width: 100%;
+    width: 80%;
     height: 30px;
 
     font-family: Roboto;
