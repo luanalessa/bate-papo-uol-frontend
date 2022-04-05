@@ -13,12 +13,9 @@ const btnChat = document.querySelector(".btn-chat");
 
 let users;
 let currentUser;
-let userStatus;
-let messageStatus;
 
 btnGetIn.addEventListener("click", async () => {
     currentUser = document.querySelector(".user-name").value;
-
     login(currentUser);    
 });
 
@@ -46,18 +43,10 @@ const login = (user) => {
         chatContent.style.display = "flex";
         getParticipants();
         getMessages();
-        userStatus = setInterval(()=> checkUser(currentUser), 5000)
+        setInterval(()=> checkUser(currentUser), 5000)
     }).catch((error) => {
         console.log(error)
     })
-};
-
-const logout = (user) => {
-    currentUser = null;
-    clearInterval(userStatus);
-    clearInterval(messageStatus);
-    initialPage.style.display = "flex";
-    chatContent.style.display = "none";
 };
 
 const checkUser = (user) => {
@@ -68,7 +57,7 @@ const checkUser = (user) => {
     }).then((response) => {
         console.log(response)
     }).catch(error => {
-        logout()
+        console.log(error)
     })
 };
 
@@ -77,8 +66,14 @@ const getParticipants = () =>{
         method:'GET',
         url: urlParticipants
     }).then((response) => {
-        users = response.data
-        messageStatus = setInterval(()=> getMessages(), 3000);
+        (response.data).forEach(user => {
+            document.querySelector(".online-users").innerHTML +=   `<div>
+                                                                        <ion-icon name="person-circle-sharp"></ion-icon>
+                                                                        <span class="contact">${user.name}</span>
+                                                                        <img src="assets/check.svg" class="check">
+                                                                    </div>`;
+        })
+        setInterval(()=> getMessages(), 3000);
     })
 };
 
